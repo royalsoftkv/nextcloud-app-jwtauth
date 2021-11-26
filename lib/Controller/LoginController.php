@@ -72,7 +72,9 @@ class LoginController extends Controller {
 			$redirectUrl = $targetPathParsed['path'];
 		}
 
+		throw new \Exception("\$username = $username");
 		$user = $this->userManager->get($username);
+		throw new \Exception("\$user = $user");
 
 		if ($user === null) {
 			// This could be made friendlier.

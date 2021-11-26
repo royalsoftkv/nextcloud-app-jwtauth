@@ -37,7 +37,7 @@ class LoginPageInterceptor {
 
 		$requestUri = $_SERVER['REQUEST_URI'];
 
-		if (strpos($requestUri, '/login') !== 0) {
+		if (strpos($requestUri, '/login') !== 0 /** and strpos($requestUri, '/index.php/login') !== 0*/) {
 			// Not a login page. We don't care.
 			return;
 		}
