@@ -37,7 +37,7 @@ class LoginPageInterceptor {
 
 		$requestUri = $_SERVER['REQUEST_URI'];
 
-		if (strpos($requestUri, '/login') !== 0 /** and strpos($requestUri, '/index.php/login') !== 0*/) {
+		if (strpos($requestUri, '/login') !== 0 and strpos($requestUri, '/index.php/login') !== 0) {
 			// Not a login page. We don't care.
 			return;
 		}
@@ -110,7 +110,11 @@ class LoginPageInterceptor {
 
 		// This represents the user wants to go after logging in. We pass it around.
 		$targetPath = (isset($_GET['redirect_url']) ? $_GET['redirect_url'] : '/');
-
+		/**
+		 * DEBUG
+		 * echo print_r($targetPath);
+		 * 	 echo var_dump($targetPath);
+		 * exit();*/
 		$targetPathSanitized = \filter_var($targetPath, \FILTER_SANITIZE_URL);
 		if ($targetPathSanitized === false) {
 			$targetPath = '/';

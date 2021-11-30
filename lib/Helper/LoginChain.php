@@ -45,7 +45,7 @@ class LoginChain {
 			->setNext($this->createSessionTokenCommand)
 			->setNext($this->clearLostPasswordTokensCommand)
 			->setNext($this->updateLastPasswordConfirmCommand)
-			->setNext($this->finishRememberedLoginCommand);
+			->setNext($this->finishRememberedLoginCommand); 
 
 		return $chain->process($loginData);
 	}

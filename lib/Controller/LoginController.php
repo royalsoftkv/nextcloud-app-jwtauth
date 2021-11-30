@@ -57,6 +57,7 @@ class LoginController extends Controller {
 	 */
 	public function auth(string $token, string $targetPath) {
 		$username = $this->jwtAuthTokenParser->parseValidatedToken($token);
+		
 		if ($username === null) {
 			// It could be that the JWT token has expired.
 			// Redirect to the homepage, which likely redirects to /login
@@ -72,9 +73,7 @@ class LoginController extends Controller {
 			$redirectUrl = $targetPathParsed['path'];
 		}
 
-		throw new \Exception("\$username = $username");
 		$user = $this->userManager->get($username);
-		throw new \Exception("\$user = $user");
 
 		if ($user === null) {
 			// This could be made friendlier.
