@@ -43,14 +43,14 @@ class LoginPageInterceptor {
 		}
 		
 		if ($this->session->getSession()->exists("forceStay")) {
-			// If we has regular remembered regula access
+			// If we has regular remembered access
 			return;
 		}
 
 		// We may sometimes need to see the regular login page.
 		// We can access it with a `forceStay` query parameter to skip this interceptor.
 		if (isset($_GET['forceStay'])) {
-			// Save regula access in session
+			// Save regular access in session
 			$this->session->getSession()->set("forceStay", true);
 			return;
 		}
